@@ -14,7 +14,9 @@ def send_echo(message):
         w = observation.get_weather()
         temp = w.get_temperature('celsius')["temp"]    
         answer = "В городе " + message.text + " сейчас " + w.get_detailed_status() + "\n"
-        answer += "Температура сейчас " + str(temp) + "\n"            
+        answer += "Температура сейчас " + str(temp) + "\n" 
+        if temp < 12:
+            answer += "Пожалуйста одевайтесь по теплее, на улице холодно!"+"\n"
     except:
         answer = 'Неверная информация, попробуйте еще раз и выясните ошибки пожалуйста'
     bot.send_message(message.chat.id, answer)
